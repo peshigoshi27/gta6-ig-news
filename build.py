@@ -8,6 +8,7 @@
 #  на залеза от gta-6.bg + логото + призив да ни последват.
 #  В "text": *думи* = в градиент; "all": true = целият текст в градиент;
 #  неразделен интервал (U+00A0) държи думите на един ред.
+#  "src": „Push Square“ — дребен ред „ИЗТОЧНИК: …“ най-долу (задължителен на всяка новина).
 #  Пътищата в issue.json са спрямо корена на хранилището.
 #   python3 build.py issues/<дата>/issue.json issues/<дата>/out
 import sys, os, json
@@ -20,6 +21,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FONT = os.path.join(HERE, 'assets/fonts/Oswald.ttf')  # Oswald Bold (OFL): condensed, с кирилица; най-близо до шрифта в примерите
 LOGO = os.path.join(HERE, 'assets/logo.png')         # „VI varna gta hub“ — само това лого
 TEXT_W, MARGIN_B = 990, 64
+SRC_GREY = (150, 140, 165)   # „Източник: …“ — дребно под заглавието (изискване на Джеймс, 2026-11-04)
 
 def font(size):
     f = ImageFont.truetype(FONT, size); f.set_variation_by_name('Bold'); return f
@@ -99,7 +101,8 @@ def sky(w, h):  # залезът от gta-6.bg (горе синьо → долу
 
 def slide(s, first=False, last=False):
     blk = headline(s['text'], s.get('all', False), max_lines=s.get('lines', 4))
-    ty = H - MARGIN_B - blk.height                         # текстът е закотвен долу
+    src = s.get('src', '')
+    ty = H - (MARGIN_B + 34 if src else MARGIN_B) - blk.height   # текстът е закотвен долу; под него — източникът
     img_h = ty + (110 if first else 60)                    # снимката свършва малко под горния ред и потъва в черно
     im = Image.new('RGB', (W, H), BLACK)
     if s.get('cutout'):                                    # финалът: персонажите на фона на залеза от сайта
@@ -118,6 +121,9 @@ def slide(s, first=False, last=False):
             d.line((x0, ly + lg.height // 2, x1, ly + lg.height // 2), fill=(236, 72, 170, 255), width=3)
         im.alpha_composite(lg, (cx - lg.width // 2, ly))
         im.alpha_composite(badge(300), (36, 36))
+    if src:
+        f = font(26); d = ImageDraw.Draw(im); t = 'ИЗТОЧНИК: ' + src.upper()
+        d.text(((W - d.textlength(t, font=f)) / 2, H - 58), t, font=f, fill=SRC_GREY)
     if last:
         lg = logo(150); im.alpha_composite(lg, ((W - lg.width) // 2, ty - lg.height - 30))
     return im.convert('RGB')
