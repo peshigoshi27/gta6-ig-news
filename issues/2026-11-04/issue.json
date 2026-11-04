@@ -1,0 +1,47 @@
+{
+ "date": "4 НОЕМВРИ",
+ "sources_note": "Rockstar Games Newswire (3.11.2026, цитиран от GamingBible, ComicBook, Player.One, VGTimes); Sensor Tower през VGTimes (4.11.2026)",
+ "slides": [
+  {
+   "img": "assets/gp/gp05.jpg",
+   "focus": 0.4,
+   "text": "*GTA 6* сваляш още на *10 ноември*"
+  },
+  {
+   "img": "assets/gp/gp03.jpg",
+   "src": "Rockstar Games",
+   "text": "Предварителното сваляне на PS5 започва на *10 ноември* в *полунощ*"
+  },
+  {
+   "img": "assets/gp/gp07.jpg",
+   "src": "Rockstar Games",
+   "text": "Играта ще заема до *212 GB* — освободи място"
+  },
+  {
+   "img": "assets/gp/gp09.jpg",
+   "src": "Rockstar Games",
+   "text": "Дисковете идват в магазините на *12 ноември* — вътре има *само код*"
+  },
+  {
+   "img": "assets/gp/gp11.jpg",
+   "focus": 0.35,
+   "src": "Rockstar Games",
+   "text": "*Безплатно:* карта на Леонида и постер на корицата от *19 ноември*"
+  },
+  {
+   "img": "assets/gp/gp12.jpg",
+   "src": "Sensor Tower",
+   "text": "*Според Sensor Tower:* вече *7,7 млн* предварителни поръчки"
+  },
+  {
+   "img": "assets/hub/arkada.jpg",
+   "focus": 0.45,
+   "text": "Във Варна: *6 PS5* и *GTA 6* за *15 €* на час"
+  },
+  {
+   "cutout": "assets/jason-lucia.png",
+   "all": true,
+   "text": "Последвай ни за всички новини за GTA 6 всеки ден"
+  }
+ ]
+}
